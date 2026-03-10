@@ -77,6 +77,23 @@ class IncidentUpdate(BaseModel):
     status: str  # investigating, identified, monitoring, resolved
     notes: Optional[str] = None
 
+class PredictionExplainRequest(BaseModel):
+    service: Optional[str] = None
+    metric_type: Optional[str] = None
+    current_value: Optional[float] = None
+    predicted_value: Optional[float] = None
+    threshold: Optional[float] = None
+    hours_until_breach: Optional[float] = None
+    confidence: Optional[float] = None
+    trend: Optional[str] = None
+
+class AnomalyExplainRequest(BaseModel):
+    service: Optional[str] = None
+    metric_type: Optional[str] = None
+    value: Optional[float] = None
+    severity: Optional[str] = None
+    detection_method: Optional[str] = None
+
 # ===================== DEMO DATA GENERATION =====================
 
 SERVICES = ["api-gateway", "user-service", "payment-service", "inventory-service", "notification-service"]
@@ -770,9 +787,10 @@ async def explain_anomaly(anomaly_id: str):
     return explanation
 
 @app.post("/api/anomalies/explain")
-async def explain_anomaly_custom(anomaly: dict):
+async def explain_anomaly_custom(anomaly: AnomalyExplainRequest):
     """Get AI explanation for provided anomaly data"""
-    explanation = await generate_ai_explanation(anomaly)
+    anomaly_dict = anomaly.model_dump()
+    explanation = await generate_ai_explanation(anomaly_dict)
     return explanation
 
 # ----- Predictions -----
@@ -811,9 +829,10 @@ async def explain_prediction(prediction_id: str):
     return explanation
 
 @app.post("/api/predictions/explain")
-async def explain_prediction_custom(prediction: dict):
+async def explain_prediction_custom(prediction: PredictionExplainRequest):
     """Get AI explanation for provided prediction"""
-    explanation = await generate_prediction_explanation(prediction)
+    prediction_dict = prediction.model_dump()
+    explanation = await generate_prediction_explanation(prediction_dict)
     return explanation
 
 # ----- Alerts -----
