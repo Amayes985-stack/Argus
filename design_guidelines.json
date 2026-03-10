@@ -1,0 +1,154 @@
+{
+  "project_name": "Sentinels - AI Monitoring Platform",
+  "theme": "dark",
+  "identity": {
+    "name": "E1",
+    "core_philosophy": "Fusion over Imitation. Technical Precision over Decorative Fluff.",
+    "emotional_tone": "Cybernetic, Omniscient, Calm under Pressure",
+    "archetype": "The Performance Pro (Elite Athleticism & Precision) + Swiss High-Contrast"
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Manrope, sans-serif",
+      "body": "IBM Plex Sans, sans-serif",
+      "code": "JetBrains Mono, monospace"
+    },
+    "scale": {
+      "h1": "text-4xl font-bold tracking-tight",
+      "h2": "text-3xl font-semibold tracking-tight",
+      "h3": "text-2xl font-medium tracking-tight",
+      "body_lg": "text-lg leading-relaxed",
+      "body": "text-base leading-relaxed text-slate-300",
+      "caption": "text-xs font-mono text-slate-500 uppercase tracking-widest",
+      "metric": "text-5xl font-mono font-bold tracking-tighter"
+    }
+  },
+  "colors": {
+    "palette": {
+      "background": {
+        "default": "#09090b",
+        "surface": "#121217",
+        "card": "#18181b",
+        "overlay": "#000000/80"
+      },
+      "primary": {
+        "base": "#3b82f6",
+        "hover": "#2563eb",
+        "active": "#1d4ed8",
+        "glow": "0 0 20px rgba(59, 130, 246, 0.5)"
+      },
+      "status": {
+        "success": "#10b981",
+        "warning": "#f59e0b",
+        "error": "#ef4444",
+        "info": "#0ea5e9"
+      },
+      "neutral": {
+        "50": "#f8fafc",
+        "100": "#f1f5f9",
+        "200": "#e2e8f0",
+        "300": "#cbd5e1",
+        "400": "#94a3b8",
+        "500": "#64748b",
+        "600": "#475569",
+        "700": "#334155",
+        "800": "#1e293b",
+        "900": "#0f172a"
+      },
+      "accents": {
+        "neon_blue": "#3b82f6",
+        "neon_cyan": "#06b6d4",
+        "neon_purple": "#8b5cf6"
+      }
+    },
+    "gradients": {
+      "primary": "linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)",
+      "glass": "linear-gradient(180deg, rgba(24, 24, 27, 0.6) 0%, rgba(24, 24, 27, 0.3) 100%)",
+      "scanline": "repeating-linear-gradient(0deg, transparent 0px, transparent 1px, rgba(59, 130, 246, 0.05) 2px, transparent 3px)"
+    }
+  },
+  "visual_enhancers": {
+    "borders": {
+      "default": "border border-white/10",
+      "active": "border border-blue-500/50",
+      "subtle": "border-r border-b border-white/5"
+    },
+    "shadows": {
+      "card": "shadow-[0_4px_20px_-2px_rgba(0,0,0,0.5)]",
+      "glow": "0 0 15px rgba(59, 130, 246, 0.3)",
+      "neon_text": "0 0 5px rgba(59, 130, 246, 0.5)"
+    },
+    "glassmorphism": {
+      "nav": "backdrop-blur-xl bg-black/50 border-b border-white/10",
+      "overlay": "backdrop-blur-md bg-black/80"
+    }
+  },
+  "layout_strategies": {
+    "bento_grid": {
+      "mode": "Mode B (High Density)",
+      "description": "Dense, data-heavy grid. No wasted space. Every pixel utilized.",
+      "gap": "gap-4",
+      "cols": "grid-cols-1 md:grid-cols-4 lg:grid-cols-12"
+    },
+    "containers": {
+      "main": "max-w-[1600px] mx-auto p-6",
+      "dashboard": "h-[calc(100vh-4rem)] overflow-hidden flex flex-col"
+    }
+  },
+  "components": {
+    "library": "shadcn/ui",
+    "style_overrides": {
+      "card": "bg-[#18181b] border-white/10 rounded-lg shadow-none hover:border-white/20 transition-colors",
+      "button": {
+        "primary": "bg-blue-600 hover:bg-blue-700 text-white rounded-md font-medium tracking-wide shadow-[0_0_10px_rgba(37,99,235,0.2)]",
+        "ghost": "hover:bg-white/5 text-slate-400 hover:text-white"
+      },
+      "input": "bg-black/20 border-white/10 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/20 rounded-md font-mono text-sm placeholder:text-slate-600",
+      "toast": "Use Sonner. Dark theme by default."
+    },
+    "charts": {
+      "library": "recharts",
+      "guidelines": {
+        "grid": "stroke='#334155' strokeDasharray='3 3' opacity={0.2}",
+        "tooltip": "bg-[#18181b] border border-white/10 shadow-xl rounded-md p-3 text-xs font-mono",
+        "axis": "text-xs font-mono text-slate-500 tickLine={false} axisLine={false}"
+      }
+    }
+  },
+  "image_urls": {
+    "landing_hero": {
+      "url": "https://images.unsplash.com/photo-1764258560300-2346b28b4e7c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzF8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBuZXR3b3JrJTIwZGFyayUyMGJsdWV8ZW58MHx8fHwxNzczMTc2NzY5fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue glowing lines on a dark background",
+      "usage": "Landing page background or hero section overlay"
+    },
+    "empty_state_server": {
+      "url": "https://images.unsplash.com/photo-1680992044138-ce4864c2b962?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODF8MHwxfHNlYXJjaHwyfHxmdXR1cmlzdGljJTIwc2VydmVyJTIwcm9vbSUyMGRhdGElMjBjZW50ZXJ8ZW58MHx8fHwxNzczMTc2NzcwfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Close up of a server in a server room",
+      "usage": "Empty state for Infrastructure monitoring or 'No Servers Found'"
+    },
+    "ai_brain": {
+      "url": "https://images.unsplash.com/photo-1764336312138-14a5368a6cd3?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMGRpZ2l0YWwlMjBuZXR3b3JrJTIwZGFyayUyMGJsdWV8ZW58MHx8fHwxNzczMTc2NzcxfDA&ixlib=rb-4.1.0&q=85",
+      "description": "Abstract blue and purple light streaks forming a head shape",
+      "usage": "Visual indicator for AI Prediction engine or loading state"
+    }
+  },
+  "motion": {
+    "reduced_motion": "respect-preference",
+    "transitions": {
+      "default": "transition-all duration-200 ease-in-out",
+      "hover": "hover:scale-[1.02] active:scale-[0.98]",
+      "page_load": "animate-in fade-in slide-in-from-bottom-4 duration-500"
+    }
+  },
+  "universal_guidelines": [
+    "NEVER use gradients for text readability. High contrast solid colors only.",
+    "Do not center align dashboard widgets. Use left alignment for data.",
+    "Use 'data-testid' on all interactive elements.",
+    "Avoid 'soft' rounded corners (xl, 2xl). Stick to 'sm' or 'md' for a technical feel.",
+    "Use skeleton loaders for all async data.",
+    "Components must use named exports.",
+    "Pages must use default exports.",
+    "Use Lucide React icons by default.",
+    "For complex data, use Recharts customized to match the dark theme (no default white backgrounds)."
+  ]
+}
