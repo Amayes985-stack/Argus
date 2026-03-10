@@ -20,7 +20,7 @@ from pymongo import MongoClient
 from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 # Initialize FastAPI
-app = FastAPI(title="Sentinels Monitoring API", version="1.0.0")
+app = FastAPI(title="Argus Monitoring API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,

@@ -1,4 +1,4 @@
-# Sentinels - AI-Powered Predictive Monitoring Platform
+# Argus - AI-Powered Predictive Monitoring Platform
 
 ## Original Problem Statement
 Build an AI-powered monitoring platform that uses AI to predict system failures before they happen. Instead of just tracking metrics after problems occur, the system would analyze patterns in logs, performance data, and user behavior to flag potential issues hours or days in advance.

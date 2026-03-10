@@ -1,5 +1,5 @@
 {
-  "name": "sentinels-monitoring",
+  "name": "argus-monitoring",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
