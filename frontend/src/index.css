@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-default: #09090b;
+  --bg-surface: #121217;
+  --bg-card: #18181b;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #0ea5e9;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  background-color: var(--bg-default);
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Status Indicators */
+.status-dot {
+  @apply w-2 h-2 rounded-full;
+}
+
+.status-healthy {
+  @apply bg-status-success;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.status-warning {
+  @apply bg-status-warning;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+}
+
+.status-critical {
+  @apply bg-status-error;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+  animation: pulse 2s infinite;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-background-card border border-white/10 rounded-lg;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  @apply border-white/20;
+}
+
+/* Metric Display */
+.metric-value {
+  @apply font-mono text-4xl font-bold tracking-tighter;
+}
+
+.metric-label {
+  @apply text-xs font-mono text-slate-500 uppercase tracking-widest;
+}
+
+/* Glow Effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideInUp 0.4s ease-out forwards;
+}
+
+/* Chart Tooltip */
+.custom-tooltip {
+  @apply bg-background-card border border-white/10 rounded-md p-3 shadow-xl;
+}
+
+/* Log Level Colors */
+.log-info { @apply text-blue-400; }
+.log-warn { @apply text-yellow-400; }
+.log-error { @apply text-red-400; }
+.log-critical { @apply text-red-500 font-semibold; }
+
+/* Skeleton Loading */
+.skeleton {
+  @apply bg-slate-800 rounded animate-pulse;
+}
