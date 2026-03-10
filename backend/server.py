@@ -17,8 +17,6 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
-import numpy as np
-from sklearn.ensemble import IsolationForest
 from emergentintegrations.llm.chat import LlmChat, UserMessage
 
 # Initialize FastAPI
@@ -197,14 +195,13 @@ def generate_logs(count: int = 100):
 
 class AnomalyDetector:
     def __init__(self):
-        self.models = {}
         self.thresholds = {
             "cpu": 85, "memory": 90, "disk": 90,
             "latency": 500, "error_rate": 5
         }
     
     def detect_anomalies(self, metrics: List[dict]) -> List[dict]:
-        """Detect anomalies using Isolation Forest and threshold-based detection"""
+        """Detect anomalies using statistical and threshold-based detection"""
         anomalies = []
         
         # Group by service and metric_type
@@ -216,24 +213,28 @@ class AnomalyDetector:
             grouped[key].append(m)
         
         for (service, metric_type), data in grouped.items():
-            values = np.array([d["value"] for d in data]).reshape(-1, 1)
+            values = [d["value"] for d in data]
             
-            if len(values) < 10:
+            if len(values) < 5:
                 continue
             
-            # Isolation Forest for ML-based detection
-            model = IsolationForest(contamination=0.1, random_state=42)
-            predictions = model.fit_predict(values)
+            # Calculate statistics for z-score based detection
+            mean_val = sum(values) / len(values)
+            variance = sum((x - mean_val) ** 2 for x in values) / len(values)
+            std_val = variance ** 0.5 if variance > 0 else 1
             
-            for i, pred in enumerate(predictions):
-                if pred == -1:  # Anomaly
+            # Statistical anomaly detection (z-score > 2.5)
+            for d in data:
+                z_score = abs(d["value"] - mean_val) / std_val if std_val > 0 else 0
+                
+                if z_score > 2.5:
                     anomalies.append({
                         "service": service,
                         "metric_type": metric_type,
-                        "value": data[i]["value"],
-                        "timestamp": data[i]["timestamp"],
-                        "detection_method": "isolation_forest",
-                        "severity": self._calculate_severity(metric_type, data[i]["value"])
+                        "value": d["value"],
+                        "timestamp": d["timestamp"],
+                        "detection_method": "statistical",
+                        "severity": self._calculate_severity(metric_type, d["value"])
                     })
             
             # Threshold-based detection
@@ -294,8 +295,8 @@ class PredictionEngine:
             
             # Calculate trend
             if len(values) >= 5:
-                recent_avg = np.mean(values[-5:])
-                older_avg = np.mean(values[:5])
+                recent_avg = sum(values[-5:]) / 5
+                older_avg = sum(values[:5]) / 5
                 trend = (recent_avg - older_avg) / max(older_avg, 1)
                 
                 # Predict future value
@@ -314,7 +315,7 @@ class PredictionEngine:
                         "current_value": round(recent_avg, 2),
                         "predicted_value": round(predicted_value, 2),
                         "threshold": thresholds[metric_type],
-                        "hours_until_breach": round(hours_ahead * (1 - recent_avg / predicted_value), 1),
+                        "hours_until_breach": round(hours_ahead * (1 - recent_avg / predicted_value), 1) if predicted_value > 0 else hours_ahead,
                         "confidence": round(confidence, 1),
                         "trend": "increasing" if trend > 0 else "decreasing",
                         "predicted_at": datetime.now(timezone.utc).isoformat()
@@ -490,8 +491,11 @@ async def get_dashboard_overview():
     for service in SERVICES:
         service_metrics = [m for m in recent_metrics if m["service"] == service]
         if service_metrics:
-            error_rate = np.mean([m["value"] for m in service_metrics if m["metric_type"] == "error_rate"]) if any(m["metric_type"] == "error_rate" for m in service_metrics) else 0
-            latency = np.mean([m["value"] for m in service_metrics if m["metric_type"] == "latency"]) if any(m["metric_type"] == "latency" for m in service_metrics) else 0
+            error_values = [m["value"] for m in service_metrics if m["metric_type"] == "error_rate"]
+            latency_values = [m["value"] for m in service_metrics if m["metric_type"] == "latency"]
+            
+            error_rate = sum(error_values) / len(error_values) if error_values else 0
+            latency = sum(latency_values) / len(latency_values) if latency_values else 0
             
             if error_rate > 10 or latency > 1000:
                 status = "critical"
