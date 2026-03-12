@@ -326,6 +326,4 @@ Argus helps engineering teams:
 - Tailwind CSS for styling  
 - Lucide Icons  
 
----
 
-**Argus – Predict system failures before they happen 🚀**
