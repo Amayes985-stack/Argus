@@ -18,7 +18,7 @@
 - **Incident Management** – Track incidents from detection to resolution
 - **Log Explorer** – Full-text log search with filtering and real-time streaming
 - **Visual Dashboard** – Interactive charts and monitoring insights
-
+  
 ---
 
 # 🔍 What It Monitors
