@@ -2,7 +2,7 @@
 
 <img src="https://img.shields.io/badge/AI-GPT%205.2-blue" /> <img src="https://img.shields.io/badge/Backend-FastAPI-green" /> <img src="https://img.shields.io/badge/Frontend-React-cyan" /> <img src="https://img.shields.io/badge/Database-MongoDB-green" />
 
-**Argus** is an intelligent monitoring platform that predicts system failures **before they happen**. Instead of only tracking metrics after problems occur, Argus analyzes patterns in logs, performance data, and system behavior to flag potential issues **hours in advance** using AI-powered analysis.
+**Argus** is an intelligent monitoring platform that predicts system failures **before they happen**. Instead of only tracking metrics after problems occur, Argus analyzes patterns in logs, performance data, and system behavior to flag potential issues **hours in advance** using AI-powered analysis and Machine Learning Models.
 
 ---
 
