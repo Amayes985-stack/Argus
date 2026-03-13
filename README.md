@@ -1,4 +1,4 @@
-# 🤖 Argus - AI-Powered Predictive Monitoring Platform
+# 🤖 Argus - ML-Powered Predictive Monitoring Platform
 
 <img src="https://img.shields.io/badge/AI-GPT%205.2-blue" /> <img src="https://img.shields.io/badge/Backend-FastAPI-green" /> <img src="https://img.shields.io/badge/Frontend-React-cyan" /> <img src="https://img.shields.io/badge/Database-MongoDB-green" />
 
