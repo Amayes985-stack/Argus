@@ -301,9 +301,10 @@ argus/
 
 ---
 
-# 📄 License
 
-MIT License
+## 📄 License
+
+This project is built for educational and production use and licensed under the [MIT License](../LICENSE). See the `LICENSE` file for more details.
 
 ---
 
